@@ -1,0 +1,7 @@
+Package: quiz_verification_table
+Type: Website
+Imports:
+  DT,
+  readr,
+  dplyr,
+  ggplot2
