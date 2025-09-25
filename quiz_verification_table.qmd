@@ -1,0 +1,49 @@
+---
+title: "Quiz Verification Table ds4owd-002"
+format: html
+---
+
+```{r}
+#| message: false
+
+library(DT)
+library(readr)
+
+# Read the quiz participation data
+quiz_data <- read_csv("quiz_participation.csv")
+
+# Display the data using DT
+datatable(quiz_data,
+          options = list(
+            pageLength = 25,
+            scrollX = TRUE
+          ))
+```
+
+## A little data analysis
+
+```{r}
+#| message: false
+
+library(dplyr)
+library(ggplot2)
+
+# Calculate completion percentages by module
+completion_stats <- quiz_data %>%
+  group_by(Quiz) %>%
+  summarise(
+    Total_Students = n(),
+    Completed = sum(Submitted == TRUE),
+    Completion_Rate = round(Completed / Total_Students * 100, 1)
+  )
+
+ggplot(completion_stats, aes(x = Quiz, y = Completion_Rate)) +
+  geom_col(fill = "steelblue", alpha = 0.7) +
+  geom_text(aes(label = paste0(Completion_Rate, "%")),
+            vjust = -0.5, size = 4) +
+  labs(title = "Quiz Completion Rates by Module",
+       x = "Module",
+       y = "Completion Rate (%)") +
+  theme_minimal() +
+  ylim(0, max(completion_stats$Completion_Rate) * 1.1)
+```
