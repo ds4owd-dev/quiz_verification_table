@@ -3,6 +3,8 @@ title: "Quiz Verification Table ds4owd-002"
 format: html
 ---
 
+Here you can find the results of [https://u4x6xe-lars-sch0bitz.shinyapps.io/ds4owd-002-quiz/](https://u4x6xe-lars-sch0bitz.shinyapps.io/ds4owd-002-quiz/), we will try to update the results every week before class.
+
 ```{r}
 #| message: false
 
