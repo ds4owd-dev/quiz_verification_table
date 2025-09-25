@@ -1,4 +1,6 @@
 Package: quiz_verification_table
+Title: Quiz Verification Table ds4owd-002
+Version: 0.0.1
 Type: Website
 Imports:
   DT,
