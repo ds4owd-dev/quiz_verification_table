@@ -4,7 +4,7 @@
     "href": "quiz_verification_table.html",
     "title": "Quiz Verification Table ds4owd-002",
     "section": "",
-    "text": "library(DT)\nlibrary(readr)\n\n# Read the quiz participation data\nquiz_data &lt;- read_csv(\"quiz_participation.csv\")\n\n# Display the data using DT\ndatatable(quiz_data,\n          options = list(\n            pageLength = 25,\n            scrollX = TRUE\n          ))"
+    "text": "Here you can find the results of https://u4x6xe-lars-sch0bitz.shinyapps.io/ds4owd-002-quiz/, we will try to update the results every week before class.\nlibrary(DT)\nlibrary(readr)\n\n# Read the quiz participation data\nquiz_data &lt;- read_csv(\"quiz_participation.csv\")\n\n# Display the data using DT\ndatatable(quiz_data,\n          options = list(\n            pageLength = 25,\n            scrollX = TRUE\n          ))"
   },
   {
     "objectID": "quiz_verification_table.html#a-little-data-analysis",
