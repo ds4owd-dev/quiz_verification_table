@@ -3,3 +3,5 @@
 .RData
 .Ruserdata
 quiz_verification_table_files
+/.quarto/
+docs/
