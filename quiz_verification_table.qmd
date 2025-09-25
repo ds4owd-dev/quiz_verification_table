@@ -4,13 +4,14 @@ format: html
 ---
 
 ```{r}
+#| echo: false
 #| message: false
 
 library(DT)
 library(readr)
 
 # Read the quiz participation data
-quiz_data <- read_csv("quiz_participation.csv")
+quiz_data <- read_csv("https://raw.githubusercontent.com/ds4owd-dev/quiz-data/refs/heads/main/data/quiz_participation.csv?token=GHSAT0AAAAAADFER3QYECMW6VQKN7USUZ7C2GVC4RQ")
 
 # Display the data using DT
 datatable(quiz_data,
@@ -23,6 +24,7 @@ datatable(quiz_data,
 ## A little data analysis
 
 ```{r}
+#| echo: false
 #| message: false
 
 library(dplyr)
