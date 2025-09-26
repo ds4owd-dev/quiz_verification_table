@@ -4,13 +4,13 @@
     "href": "quiz_verification_table.html",
     "title": "Quiz Verification Table ds4owd-002",
     "section": "",
-    "text": "Here you can find the results of https://u4x6xe-lars-sch0bitz.shinyapps.io/ds4owd-002-quiz/, we will try to update the results every week before class.\nlibrary(DT)\nlibrary(readr)\n\n# Read the quiz participation data\nquiz_data &lt;- read_csv(\"quiz_participation.csv\")\n\n# Display the data using DT\ndatatable(quiz_data,\n          options = list(\n            pageLength = 25,\n            scrollX = TRUE\n          ))"
+    "text": "Here you can find the results of https://u4x6xe-lars-sch0bitz.shinyapps.io/ds4owd-002-quiz/, we will try to update the results every week before class."
   },
   {
     "objectID": "quiz_verification_table.html#a-little-data-analysis",
     "href": "quiz_verification_table.html#a-little-data-analysis",
     "title": "Quiz Verification Table ds4owd-002",
     "section": "A little data analysis",
-    "text": "A little data analysis\n\nlibrary(dplyr)\nlibrary(ggplot2)\n\n# Calculate completion percentages by module\ncompletion_stats &lt;- quiz_data %&gt;%\n  group_by(Quiz) %&gt;%\n  summarise(\n    Total_Students = n(),\n    Completed = sum(Submitted == TRUE),\n    Completion_Rate = round(Completed / Total_Students * 100, 1)\n  )\n\nggplot(completion_stats, aes(x = Quiz, y = Completion_Rate)) +\n  geom_col(fill = \"steelblue\", alpha = 0.7) +\n  geom_text(aes(label = paste0(Completion_Rate, \"%\")),\n            vjust = -0.5, size = 4) +\n  labs(title = \"Quiz Completion Rates by Module\",\n       x = \"Module\",\n       y = \"Completion Rate (%)\") +\n  theme_minimal() +\n  ylim(0, max(completion_stats$Completion_Rate) * 1.1)"
+    "text": "A little data analysis"
   }
 ]
