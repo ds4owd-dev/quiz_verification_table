@@ -24,14 +24,10 @@ jobs:
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
         
-      - name: Configure GitHub token for R
-        run: |
-          echo "GITHUB_PAT=${{ secrets.GITHUB_TOKEN }}" >> $GITHUB_ENV
-        shell: bash
-        
       - name: Render and Publish
         uses: quarto-dev/quarto-actions/publish@v2
         with:
           target: gh-pages
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_PAT: ${{ secrets.GH_PAT }}
