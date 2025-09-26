@@ -6,4 +6,6 @@ Imports:
   DT,
   readr,
   dplyr,
-  ggplot2
+  ggplot2,
+  gh,
+  base64enc
