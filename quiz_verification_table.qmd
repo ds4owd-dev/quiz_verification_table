@@ -6,13 +6,25 @@ format: html
 Here you can find the results of [https://u4x6xe-lars-sch0bitz.shinyapps.io/ds4owd-002-quiz/](https://u4x6xe-lars-sch0bitz.shinyapps.io/ds4owd-002-quiz/), we will try to update the results every week before class.
 
 ```{r}
+#| echo: false
 #| message: false
 
 library(DT)
+library(gh)
 library(readr)
+library(base64enc)
 
 # Read the quiz participation data
-quiz_data <- read_csv("quiz_participation.csv")
+file_info <- gh("GET /repos/{owner}/{repo}/contents/{path}",
+                owner = "ds4owd-dev",
+                repo = "quiz-data",
+                path = "data/quiz_participation.csv")
+
+# Decode the base64 content properly
+csv_content <- rawToChar(base64decode(file_info$content))
+
+# Read the CSV from the decoded content
+quiz_data <- read_csv(csv_content, show_col_types = FALSE)
 
 # Display the data using DT
 datatable(quiz_data,
@@ -25,6 +37,7 @@ datatable(quiz_data,
 ## A little data analysis
 
 ```{r}
+#| echo: false
 #| message: false
 
 library(dplyr)
