@@ -8,10 +8,21 @@ format: html
 #| message: false
 
 library(DT)
+library(gh)
 library(readr)
+library(base64enc)
 
 # Read the quiz participation data
-quiz_data <- read_csv("https://raw.githubusercontent.com/ds4owd-dev/quiz-data/refs/heads/main/data/quiz_participation.csv?token=GHSAT0AAAAAADFER3QYECMW6VQKN7USUZ7C2GVC4RQ")
+file_info <- gh("GET /repos/{owner}/{repo}/contents/{path}",
+                owner = "ds4owd-dev",
+                repo = "quiz-data",
+                path = "data/quiz_participation.csv")
+
+# Decode the base64 content properly
+csv_content <- rawToChar(base64decode(file_info$content))
+
+# Read the CSV from the decoded content
+quiz_data <- read_csv(csv_content, show_col_types = FALSE)
 
 # Display the data using DT
 datatable(quiz_data,
